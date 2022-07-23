@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css?family=Amarante&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Carter+One&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
+#App {
+  font-family: "Carter One", cursive;
+}
+
+.homepage {
+  height: 100%;
+  width: 100%;
+  background: #3d7eaa; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #ffe47a,
+    #3d7eaa
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #ffe47a,
+    #3d7eaa
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.HeaderDiv {
+  position: relative;
+  font-family: "Carter One", cursive;
+  border: 2px;
+  padding: 4px;
+  border-radius: 2px;
+  z-index: 1;
+  box-shadow: 2px 6px rgba(192, 192, 192, 0.836);
+  /* background-image: -webkit-linear-gradient(
+    -90deg,
+    rgba(107, 222, 240, 0.802),
+    rgba(78, 209, 78, 0.659)
+  ); */
+  background-color: rgb(71, 69, 69);
+  color: white;
+}
+
+#page-wrap {
+  text-align: center;
+}
+
+.bm-item:hover {
+  color: rgb(128, 122, 122);
+}
+
+/* Individual item */
+.bm-item {
+  display: inline-block;
+  /* Our sidebar item styling */
+  text-decoration: none;
+  color: #d1d1d1;
+  transition: color 0.2s;
+  align-content: right;
+}
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  left: 36px;
+  top: 36px;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: #ffffff;
+}
+
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+  background: #9e9b9b;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #bdc3c7;
+}
+
+/*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: #373a47;
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #b8b7ad;
+  /* padding: 0.8em; */
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* General styling */
+.item-container {
+  width: 100%;
+  height: 30%;
+}
