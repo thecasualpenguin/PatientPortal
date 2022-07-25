@@ -1,38 +1,34 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
 import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./index.css";
 
-import {Button, TextField} from '@material-ui/core'; //importing material ui component
-import {AppBar, Toolbar, Typography} from '@material-ui/core';
 
 import PatientForm from "./components/PatientForm";
-import Sidebar from "./components/Sidebar";
 import Navbar from "./components/TopNavbar";
+import {Home} from "./pages/Home";
+import {ContactUs} from "./pages/ContactUs";
+import {Register} from "./pages/Register.js";
+import {Reports} from "./pages/Reports.js";
+import {Products} from "./pages/Products.js";
 
-
-
-function Header() {
-  return (
-    <AppBar position='static'>
-       <Toolbar>
-           <Typography>Another Navbar</Typography>
-       </Toolbar>
-    </AppBar>
-
-  );
-}
 
 const App = () => {
 	return (
 		<React.StrictMode>
-        <div>
-          <Navbar />
+			<BrowserRouter>
+				<Navbar />
+				<div id="App">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/reports" element={<Reports />} />
+            <Route path="/contactus" element={<ContactUs />} />
+            <Route path="/register" element={<Register />} />
+          </Routes>
         </div>
-        <div id='App'>
-          <Button color="primary" variant="contained"> Press me </Button> 
-          <TextField id="name" label="Name" variant="outlined" />
-        </div>
+			</BrowserRouter>
 		</React.StrictMode>
 	);
 };

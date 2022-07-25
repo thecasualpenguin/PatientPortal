@@ -26,7 +26,7 @@
   grid-gap: 10px;
   list-style: none;
   text-align: center;
-  width: 70vw;
+  width: 50vw;
   justify-content: end;
   margin-right: 2rem;  
 }
@@ -39,6 +39,12 @@
 
 .nav-link:hover{
   background-color: #6d76f7;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav-link-active{
+  background-color: #99a0f9;
   border-radius: 4px;
   transition: all 0.2s ease-in-out;
 }
