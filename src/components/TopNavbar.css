@@ -34,6 +34,9 @@
 .nav-link {
   color: white;
   text-decoration: none;
+  border-width: 2px;
+  border-style: solid;
+  border-color: transparent;
   padding: 0.5rem 1rem;
 }
 
@@ -44,9 +47,12 @@
 }
 
 .nav-link-active{
-  background-color: #99a0f9;
+  /* background-color: #99a0f9; */
+  border-style: solid;
   border-radius: 4px;
-  transition: all 0.2s ease-in-out;
+  border-color: #ffffff;
+  border-width: 2px;
+  transition: all 0.2s linear;
 }
 
 .register-padding {
