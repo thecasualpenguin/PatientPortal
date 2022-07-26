@@ -3,9 +3,10 @@ import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./index.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-import PatientForm from "./components/PatientForm";
+import PatientForm from "./pages/PatientForm";
 import Navbar from "./components/TopNavbar";
 import {Home} from "./pages/Home";
 import {ContactUs} from "./pages/ContactUs";
