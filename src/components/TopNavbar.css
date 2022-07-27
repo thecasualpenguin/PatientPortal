@@ -20,7 +20,21 @@
   font-size: 1.6rem;
 }
 
+.nav-menu-old {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-gap: 10px;
+  list-style: none;
+  text-align: center;
+  width: 50vw;
+  justify-content: end;
+  margin-right: 2rem;  
+  align-items: baseline;
+}
+
 .nav-menu {
+  margin: 0;
+  padding: 0;
   display: grid;
   grid-template-columns: repeat(5, auto);
   grid-gap: 10px;
@@ -28,7 +42,7 @@
   text-align: center;
   width: 50vw;
   justify-content: end;
-  margin-right: 2rem;  
+  margin-right: 1rem;  
 }
 
 .nav-link {

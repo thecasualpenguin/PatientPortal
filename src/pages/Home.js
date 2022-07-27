@@ -17,11 +17,7 @@ export const Home = () => {
 		<React.Fragment>
 			<h1>Homepage</h1>
 
-			<Button color="primary" variant="contained">
-				{" "}
-				Press me{" "}
-			</Button>
-			<TextField id="name" label="Name" variant="outlined" />
+
 		</React.Fragment>
 	);
 };

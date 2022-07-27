@@ -1,10 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import "./index.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 
 import PatientForm from "./pages/PatientForm";
 import Navbar from "./components/TopNavbar";
@@ -13,6 +12,8 @@ import {ContactUs} from "./pages/ContactUs";
 import {Register} from "./pages/Register.js";
 import {Reports} from "./pages/Reports.js";
 import {Products} from "./pages/Products.js";
+import {ScreeningForm} from "./pages/ScreeningForm.js";
+import {Developer} from "./pages/Developer.js";
 
 
 const App = () => {
@@ -27,6 +28,9 @@ const App = () => {
             <Route path="/reports" element={<Reports />} />
             <Route path="/contactus" element={<ContactUs />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/screening" element={<ScreeningForm />} />
+            <Route path="/developer" element={<Developer />} />
+            <Route path="/*" element={ <Navigate to="/" replace={true}/> } />
           </Routes>
         </div>
 			</BrowserRouter>

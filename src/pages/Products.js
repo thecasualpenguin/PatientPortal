@@ -1,33 +1,28 @@
 import React from "react";
 import Jumbotron from "react-bootstrap/Jumbotron";
-import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import Card from "react-bootstrap/Card";
+import ProductList from "../components/ProductList";
 
 export const Products = () => {
 	return (
 		<React.Fragment>
-			<Jumbotron fluid={true}>
-				<Container>
+			<Jumbotron
+				fluid={true}
+				style={{
+					"background-image": "url(/images/lab-background.jpg)",
+					padding: "8rem 0em",
+					border: "solid",
+					borderColor: "white",
+					borderWidth: "2rem 0px",
+				}}
+			>
+				<Container style={{color: 'white', fontWeight:'500'}}>
 					<h1>Products</h1>
-					<p>
-						This is a modified jumbotron that occupies the entire horizontal
-						space of its parent.
-					</p>
+					<p>This Banner is used to highlight a specific product.</p>
 				</Container>
 			</Jumbotron>
 
-			<Card style={{ width: "18rem" }}>
-				<Card.Img variant="top" src={require('../resources/testkit.jpg')} alt='testkit' />
-				<Card.Body>
-					<Card.Title>Card Title</Card.Title>
-					<Card.Text>
-						Some quick example text to build on the card title and make up the
-						bulk of the card's content.
-					</Card.Text>
-					<Button variant="primary">Go somewhere</Button>
-				</Card.Body>
-			</Card>
+			<ProductList />
 		</React.Fragment>
 	);
 };
