@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { MenuItems } from "./MenuItems";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserMd } from "@fortawesome/free-solid-svg-icons";
-import { DynamicButton } from "./DynamicButton";
+import { DynamicButton } from "../DynamicButton";
 import Sidebar from "./Sidebar";
 import { Link, useResolvedPath, useMatch } from "react-router-dom";
 
@@ -38,7 +38,7 @@ class Navbar extends Component {
 		return (
 			<nav className="NavbarItems">
 				{/* <Sidebar /> */}
-
+      
 				<div className="menu-icon" onClick={this.handleClick}>
 					<i
 						className={`fa-solid fa-custom-style ${
@@ -48,7 +48,7 @@ class Navbar extends Component {
 				</div>
 
 				<Link to="/" style={{ "text-decoration": "none" }}>
-					<h1 className="navbar-logo">
+					<h1 className="navbar-logo custom-font">
 						Patient Portal
 						{/* <i className="fa-solid fa-hand-holding-medical"></i> */}
 						<i className="fa-solid fa-briefcase-medical fa-custom-style" />
@@ -61,9 +61,9 @@ class Navbar extends Component {
 					})}
 				</ul>
 
-				<div className="register-padding">
+				<div className="register-icon">
 					<DynamicButton buttonSize="btn--large" to="/register">
-						Register
+						<div>Register</div>
 					</DynamicButton>
 				</div>
 			</nav>

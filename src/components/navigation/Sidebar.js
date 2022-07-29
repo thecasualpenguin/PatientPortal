@@ -1,6 +1,6 @@
 import React from "react";
 import { push as Menu } from "react-burger-menu";
-import "./styles.css";
+import "./Sidebar.css";
 
 // import { push as Menu } from "react-burger-menu";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
