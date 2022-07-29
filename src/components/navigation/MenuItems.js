@@ -19,4 +19,9 @@ export const MenuItems = [
     url: '/contactus',
     cName: 'nav-link'
   },
+  {
+    title: 'Register',
+    url: '/register',
+    cName: 'nav-link backup-register-button'
+  },
 ];

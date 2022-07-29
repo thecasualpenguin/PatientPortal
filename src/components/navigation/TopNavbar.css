@@ -89,6 +89,10 @@ h1 {
   display: none;
 }
 
+.backup-register-button {
+  display: none;
+}
+
 @media screen and (max-width: 1000px) {
   .nav-menu {
     display: flex;
@@ -147,13 +151,13 @@ h1 {
     transform: translate(-70%, 45%);
   }
 
-  @media screen and (max-width: 530px) { 
+  @media screen and (max-width: 535px) { 
     .navbar-logo {
       display: block;
       position: absolute;
       top: 0;
       right: 0;
-      transform: scale(0.75) translate(-13%, 45%);
+      transform: scale(0.80) translate(-5%, 40%);
     }
 
     .fa-briefcase-medical {
@@ -161,19 +165,22 @@ h1 {
     }
 
     .register-icon {
-      display: block;
-      position: absolute;
-      top: 0;
-      right: 0;
-      transform: scale(0.80) scaleX(0.92) translate(-65%, 60%);
+      display: none;
     }
 
     .menu-icon {
-      display: block;
       position: absolute;
       top: 0;
       right: 0;
-      transform: scale(0.90) translate(-80%, 55%);
+      transform: translate(-45%, 46%);
+    }
+
+    .nav-menu {
+      height: 310px;
+    }
+
+    .backup-register-button {
+      display: block;
     }
   }
 
