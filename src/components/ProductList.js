@@ -1,6 +1,8 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import Card from "react-bootstrap/Card";
 import { ProductListItems } from "./ProductListItems";
 import { Link } from "react-router-dom";
@@ -8,11 +10,11 @@ import { Link } from "react-router-dom";
 const ProductList = (props) => {
 	return (
 		<React.Fragment>
-			<div className="container">
-				<div className="row">
+			<Container fluid={false}>
+				<Row>
 					<MappedCards />
-				</div>
-			</div>
+				</Row>
+			</Container>
 		</React.Fragment>
 	);
 };
@@ -20,8 +22,8 @@ const ProductList = (props) => {
 const MappedCards = function () {
 	const productListCards = ProductListItems.map((e, i) => {
 		return (
-			<div className="col-md-4">
-				<Card style={{ width: "18rem", margin: "1rem 0rem" }}>
+			<Col sm='6' lg="4">
+				<Card style={{ maxWidth: "20rem", minWidth: "16rem", margin: "1rem 0rem" }}>
 					<Card.Img variant="top" src={e.src} alt={e.alt} />
 					<Card.Body>
 						<Card.Title>{e.title}</Card.Title>
@@ -40,7 +42,7 @@ const MappedCards = function () {
             
 					</Card.Body>
 				</Card>
-			</div>
+			</Col>
 		);
 	});
 
