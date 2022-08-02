@@ -36,7 +36,8 @@ class Navbar extends Component {
 
 	render() {
 		return (
-			<nav className="NavbarItems">
+			<nav className={this.props.trans == true ? 'NavbarItems BgTrans' : 'NavbarItems'}>
+        {console.log(this.props.trans)}
 				{/* <Sidebar /> */}
       
 				<div className="menu-icon" onClick={this.handleClick}>

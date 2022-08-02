@@ -13,13 +13,11 @@ function Header() {
 	);
 }
 
-export const Home = () => {
+export const Home = (props) => {
+  const navbar = props.inner;
 	return (
 		<React.Fragment>
-			<h1>Homepage</h1>
-      <ParallaxBanner />
-
-
+      <ParallaxBanner>{props.children}</ParallaxBanner>
 		</React.Fragment>
 	);
 };

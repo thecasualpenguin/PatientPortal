@@ -2,10 +2,10 @@ import React from "react";
 import Sidebar from "./navigation/Sidebar";
 import Navbar from "./navigation/TopNavbar";
 
-const Navigation = function() {
+const Navigation = function(props) {
   return (
     <React.Fragment>
-      <Navbar />
+      <Navbar trans={props.trans}/>
     </React.Fragment>
   );
 }

@@ -20,8 +20,6 @@ export const DynamicButton = ({
 		: STYLES[0];
 	const checkButtonSize = STYLES.includes(buttonSize) ? buttonSize : SIZES[0];
 
-	console.log(buttonStyle);
-	console.log(buttonSize);
 	return (
 		<Link to={to}>
 			<button className={`btn ${checkButtonStyle} ${checkButtonSize}`}>

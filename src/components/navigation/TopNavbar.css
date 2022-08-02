@@ -14,13 +14,16 @@ h1 {
 
 .NavbarItems {
   background: linear-gradient(90deg, rgb(110, 94, 254) 0%, rgba(73, 63, 252, 1) 100%);
-  background-color: #00000000;
   height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.2rem;
   
+}
+
+.BgTrans {
+  background: transparent;
 }
 
 .navbar-logo {
@@ -140,7 +143,7 @@ h1 {
     position: absolute;
     top: 0;
     right: 0;
-    transform: translate(-80%, 45%);
+    transform: translate(-80%, 33%);
     font-size: 1.8rem;
   }
 
@@ -151,38 +154,37 @@ h1 {
     right: 0;
     transform: translate(-70%, 45%);
   }
+}
 
-  @media screen and (max-width: 535px) { 
-    .navbar-logo {
-      display: block;
-      position: absolute;
-      top: 0;
-      right: 0;
-      transform: scale(0.80) translate(-5%, 40%);
-    }
-
-    .fa-briefcase-medical {
-      display: none;
-    }
-
-    .register-icon {
-      display: none;
-    }
-
-    .menu-icon {
-      position: absolute;
-      top: 0;
-      right: 0;
-      transform: translate(-45%, 46%);
-    }
-
-    .nav-menu {
-      height: 310px;
-    }
-
-    .backup-register-button {
-      display: block;
-    }
+@media screen and (max-width: 535px) { 
+  .navbar-logo {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: scale(0.80) translate(-5%, 40%);
   }
 
+  .fa-briefcase-medical {
+    display: none;
+  }
+
+  .register-icon {
+    display: none;
+  }
+
+  .menu-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-45%, 33%);
+  }
+
+  .nav-menu {
+    height: 310px;
+  }
+
+  .backup-register-button {
+    display: block;
+  }
 }
