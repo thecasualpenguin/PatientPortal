@@ -12,8 +12,8 @@ export default function ParallaxBanner(props) {
         <div className="title center"> TESTS FOR YOU</div>
 
       </div>
-      <div className='bgimg-2'>Some Medical Placeholder 2</div>
-      <div className='bgimg-3'>Some Medical Placeholder 3</div>
+      <div className='bgimg-2 flexbox-center'><p className="placeholder-text">Some Medical Placeholder 2</p></div>
+      <div className='bgimg-3 flexbox-center'><p className="placeholder-text">Some Medical Placeholder 3</p></div>
     </div>  
   );
 };

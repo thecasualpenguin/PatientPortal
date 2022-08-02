@@ -3,7 +3,14 @@
 body, html {
   height: 100%;
   color: #777;
+  font-size: 20px;
   line-height: 1.8;
+}
+
+.placeholder-text {
+  color: #EEE;
+  text-align: center;
+  margin: 0
 }
 
 /* The hack for parallax effect, neat little trick */
@@ -48,6 +55,13 @@ body, html {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+
+.flexbox-center {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
 }
 
 .w3-wide {letter-spacing: 10px;}
