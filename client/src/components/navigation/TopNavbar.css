@@ -9,7 +9,7 @@
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 2.0rem;
 }
 
 .NavbarItems {
@@ -18,7 +18,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.2rem;
+  font-size: 1.0rem;
   
 }
 
@@ -35,7 +35,7 @@ h1 {
 
 .fa-custom-style {
   margin-left: 0.6rem;
-  font-size: 1.7rem;
+  font-size: 1.5rem;
 }
 
 .nav-menu-old {
@@ -97,7 +97,7 @@ h1 {
   display: none;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1080px) {
   .nav-menu {
     display: flex;
     flex-direction: column;
@@ -143,7 +143,7 @@ h1 {
     position: absolute;
     top: 0;
     right: 0;
-    transform: translate(-80%, 33%);
+    transform: translate(-60%, 13%);
     font-size: 1.8rem;
   }
 
@@ -156,13 +156,13 @@ h1 {
   }
 }
 
-@media screen and (max-width: 535px) { 
+@media screen and (max-width: 550px) { 
   .navbar-logo {
     display: block;
     position: absolute;
     top: 0;
     right: 0;
-    transform: scale(0.80) translate(-5%, 40%);
+    transform: scale(0.85) translate(-3%, 40%);
   }
 
   .fa-briefcase-medical {
@@ -177,7 +177,7 @@ h1 {
     position: absolute;
     top: 0;
     right: 0;
-    transform: translate(-45%, 33%);
+    transform: translate(-60%, 13%);
   }
 
   .nav-menu {
