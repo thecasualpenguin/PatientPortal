@@ -6,6 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
+import { allProductsEndpoint } from "../env";
 
 const ProductList = (props) => {
 	// populate product list first
@@ -16,7 +17,7 @@ const ProductList = (props) => {
 			// let text = await fetchTextCustom("http://127.0.0.1:3001/api/developer/text");
 			// console.log(text);
 
-			const response = await fetch("http://127.0.0.1:3001/api/getProducts?numItems=all");
+			const response = await fetch(allProductsEndpoint);
 			const jsonData = await response.json()
 
 			// converted fetched JSON object to array

@@ -24,7 +24,10 @@ router.route("/developer/text")
 router.route("/getProducts")
   .get(async (req, res) => {
     // if (Object.keys(req.query).length === 0) res.send({});
-    if (req.query.numItems === undefined) res.send( {status: 'error', msg: 'bad GET request'})
+    if (req.query.numItems === undefined) {
+      res.send( {status: 'error', msg: 'bad GET request'})
+      return;
+    }
 
     if (req.query.numItems === 'all') {
       const dbResponse = await readAllProducts();
