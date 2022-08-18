@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect, useState } from "react";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Container from "react-bootstrap/Container";
 import ProductList from "../components/ProductList";
@@ -16,7 +17,7 @@ export const Products = () => {
 					borderWidth: "2rem 0px",
 				}}
 			>
-				<Container style={{color: 'white', fontWeight:'500'}}>
+				<Container style={{ color: "white", fontWeight: "500" }}>
 					<h1>Products</h1>
 					<p>This Banner is used to highlight a specific product.</p>
 				</Container>

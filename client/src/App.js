@@ -16,7 +16,7 @@ import { Developer } from "./pages/Developer.js";
 
 const App = () => {
 
-	return (
+	return (  
 		<React.StrictMode>
 			<BrowserRouter>
 				<div id="App">
