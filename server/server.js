@@ -10,6 +10,7 @@ const logger = require("./middleware/logger");
 const app = express();
 
 
+
 // setting up view engine and middleware
 app.set('view engine', 'ejs');
 app
