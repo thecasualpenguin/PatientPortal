@@ -9,9 +9,12 @@
 // };
 const { lookup } = require('geoip-lite');
 const NodeGeocoder = require('node-geocoder');
+const { writeLogEntry } = require('../model/interactDB');
+const axios = require('axios').default;
 
 async function getReverseGeocodedLocation(lat, long) {
-
+  
+  // google maps API implementation (1000 req/day for free)
   // const options = {
   //   provider: 'google',
   
@@ -42,31 +45,47 @@ async function getReverseGeocodedLocation(lat, long) {
       }
   });
 
+  // IP stack implementation
+  // res = await fetch(`http://api.ipstack.com/${ip}?access_key=3f8eab5a63d5e3900bf9ec4ae8d68aae`);
+  // console.log(await res.json())
+  
+  // geoip-lite implementation
+  // location = lookup(ip)
+  // console.log(getReverseGeocodedLocation(location.ll[0], location.ll[1]))
 }
 
 async function logAndSaveReqInfo(req) {
+  // get request IP
   let ip = req.ip;
   if (ip.substr(0, 7) == "::ffff:") {
-    ip = ip.substr(7)
+    ip = ip.substr(7)   // convert to standard IPv4
   }
-  console.log(new Date().toLocaleString());
-  console.log(`IP: ${ip}`)
-  process.stdout.write('Location: ');
 
-  res = await fetch(`http://api.ipstack.com/${ip}?access_key=3f8eab5a63d5e3900bf9ec4ae8d68aae`);
-  console.log(await res.json())
+  // get IP approximate location
+  let locationRes = await axios({
+    url: `http://ip-api.com/json/${ip}`,
+    method: 'get',
+    data: {
+      name: 'kyle',
+    }
+  });
+
+  // build log entry
+  let logEntry = {
+    'datetime': new Date().toLocaleString(),
+    'ipAddress': ip,
+    'location': ip !== '127.0.0.1' ? locationRes.data : {'status': 'intercepted by developer'},
+    'action': `Hitting ${req.originalUrl}`
+  }
+  writeLogEntry(logEntry);
   
-  console.log(`Hitting: ${req.originalUrl}`);
-
-  return 0
-  // location = lookup(ip)
-  // console.log(getReverseGeocodedLocation(location.ll[0], location.ll[1]))
-
+  return logEntry;
 }
 
 async function logger(req, res, next) {
   console.log('====================================');
-  await logAndSaveReqInfo(req)
+  let logEntry = await logAndSaveReqInfo(req);
+  console.log(logEntry);
   console.log('====================================');
 
   next();

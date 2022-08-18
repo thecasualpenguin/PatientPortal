@@ -5,6 +5,7 @@ require("dotenv").config()
 
 // set up dependencies
 const express = require('express');
+const vhost = require('vhost');
 const cors = require('cors');
 const logger = require("./middleware/logger");
 const app = express();

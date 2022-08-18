@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 // configure database
-const { User, Product } = require("./model.js");
+const { User, Product, LogEntry } = require("./model.js");
 
 mongoose.connect(process.env.DATABASE_URL).then(
 	() => console.log("Database Status: " + mongoose.connection.readyState),
@@ -40,7 +40,16 @@ const readAllProducts = function () {
 	});
 };
 
+const writeLogEntry = function (logEntryJSON) {
+  const product = new LogEntry(logEntryJSON);
+	product
+		.save()
+		.then(() => console.log("log entry saved"))
+		.catch((error) => console.error(error));
+}
+
 module.exports = {
 	readAllProducts,
 	writeProduct,
+  writeLogEntry,
 };
