@@ -14,7 +14,7 @@ import { Reports } from "./pages/Reports.js";
 import { Products } from "./pages/Products.js";
 import { ScreeningForm } from "./pages/ScreeningForm.js";
 import { Developer } from "./pages/Developer.js";
-import { DisplayDatabase } from "./pages/DisplayDatabase";
+import { AdminDashboard } from "./pages/AdminDashboard";
 
 const App = () => {
 
@@ -30,7 +30,7 @@ const App = () => {
             <Route path="/register" element={<div> <Navigation /><Register /></div>} />
             <Route path="/screening" element={<div> <Navigation /><ScreeningForm /></div>} />
             <Route path="/developer" element={<div> <Navigation /><Developer /></div>} />
-            <Route path="/display-database" element={<div> <Navigation /><DisplayDatabase /></div>} />
+            <Route path="/admin-dashboard" element={<div> <Navigation /><AdminDashboard /></div>} />
             <Route path="/*" element={ <Navigate to="/" replace={true}/> } />
 					</Routes>
 				</div>

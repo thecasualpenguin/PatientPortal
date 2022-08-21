@@ -5,17 +5,22 @@ import Row from 'react-bootstrap/Row';
 import Button from "react-bootstrap/Button";
 import InputGroup from 'react-bootstrap/InputGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 import "./styles/Register.css";
 import { rgbToHex } from "@material-ui/core";
 import { postRegisterForm } from "../../api/post";
+import { useNavigate } from "react-router-dom";
 
 export const RegisterForm2 = () => {
+  const navigate = useNavigate();
   const [validated, setValidated] = useState(false);
   
   let unsetUserType = 'Select One'
   const[submitCount, setSubmitCount] = useState(0)    // check how many times a user has submitted form, to guard against bots
 
   const [formData, setFormData] = useState({
+    "dateCreated": null,
     "fname": null,
     "lname": null,
     "age": null,
@@ -33,7 +38,7 @@ export const RegisterForm2 = () => {
   }
 
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     const form = event.currentTarget;
 
     if (form.checkValidity() === false || formData.userType==unsetUserType) {
@@ -43,11 +48,11 @@ export const RegisterForm2 = () => {
       setValidated(true);
       return
     }
-
     event.preventDefault();
 
-    setFormData({
-      ...formData,
+    const data = {
+      ...formData, 
+      'dateCreated': new Date(),
       'fname': document.getElementById('register-fname').value,
       'lname': document.getElementById('register-lname').value,
       'age': document.getElementById('register-age').value,
@@ -57,17 +62,21 @@ export const RegisterForm2 = () => {
       'state': document.getElementById('register-state').value,
       'zip': document.getElementById('register-zip').value,
       'userType': document.getElementById('register-userType').innerText,
-    });
+    };
 
-    postRegisterForm(formData);
+    setFormData(data);    // due to some potential closure issue, set to state hook will only be updated next render
+    // postRegisterForm(data);   // thus just use temp variable instead.
 
+    form.reset();
+    setValidated(false);
+    // window.location.replace("/products")
+    navigate('/products', { replace: true });
 
-    // check all fields filled out
   };
 
 	return (
     <Form noValidate validated={validated} onSubmit={handleSubmit} className="centerForm">
-      <Row className="mb-3">
+      <Row className="mb-3 justify-content-md-center">
         <Form.Group as={Col} md="4" controlId="register-fname">
           <Form.Label>First name</Form.Label>
           <Form.Control
@@ -89,7 +98,7 @@ export const RegisterForm2 = () => {
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
         
-        <Form.Group as={Col} md="4" controlId="register-age">
+        <Form.Group as={Col} md="2" controlId="register-age">
           <Form.Label>Age</Form.Label>
           <Form.Control
             required
@@ -102,8 +111,36 @@ export const RegisterForm2 = () => {
 
       </Row>
 
+      <Row className="mb-3 justify-content-md-center">
+        <Form.Group as={Col} md="4" controlId="register-city">
+          <Form.Label>City</Form.Label>
+          <Form.Control type="text" placeholder="City" required />
+          <Form.Control.Feedback type="invalid">
+            Please provide a valid city.
+          </Form.Control.Feedback>
+        </Form.Group>
+        <Form.Group as={Col} md="4" controlId="register-state">
+          <Form.Label>State</Form.Label>
+          <Form.Control type="text" placeholder="State" required />
+          <Form.Control.Feedback type="invalid">
+            Please provide a valid state.
+          </Form.Control.Feedback>
+        </Form.Group>
+        <Form.Group as={Col} md="2" controlId="register-zip">
+          <Form.Label>Zip</Form.Label>
+          <Form.Control type="text" placeholder="Zip" required />
+          <Form.Control.Feedback type="invalid">
+            Please provide a valid zip.
+          </Form.Control.Feedback>
+        </Form.Group>
+      </Row>
+      
+      
+      <hr />
+
       <Row className="mb-3">
-        <Form.Group as={Col} md="6" controlId="register-email">
+        <Col md='1'></Col>
+        <Form.Group as={Col} md="10" controlId="register-email">
             <Form.Label>Email</Form.Label>
             <InputGroup hasValidation>
               <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
@@ -118,60 +155,56 @@ export const RegisterForm2 = () => {
               </Form.Control.Feedback>
             </InputGroup>
           </Form.Group>
-
-          <Form.Group as={Col} md="6" controlId="register-password">
-            <Form.Label>Password</Form.Label>
-            <InputGroup hasValidation>
-              <InputGroup.Text id="inputGroupPrepend">🔑</InputGroup.Text>
-              <Form.Control
-                type="text"
-                placeholder="password1"
-                aria-describedby="inputGroupPrepend"
-                required
-              />
-              <Form.Control.Feedback type="invalid">
-                Please choose a password.
-              </Form.Control.Feedback>
-            </InputGroup>
-          </Form.Group>
+        <Col md='1'></Col>
       </Row>
-      
-      
-      <hr />
-
-
       <Row className="mb-3">
-        <Form.Group as={Col} md="6" controlId="register-city">
-          <Form.Label>City</Form.Label>
-          <Form.Control type="text" placeholder="City" required />
-          <Form.Control.Feedback type="invalid">
-            Please provide a valid city.
-          </Form.Control.Feedback>
+      <Col md='1'></Col>
+        <Form.Group as={Col} md="10" controlId="register-password">
+          <Form.Label>Password</Form.Label>
+          <InputGroup hasValidation>
+            <InputGroup.Text id="inputGroupPrepend">🔑</InputGroup.Text>
+            <Form.Control
+              type="password"
+              placeholder="password1"
+              aria-describedby="inputGroupPrepend"
+              required
+            />
+
+            <OverlayTrigger overlay={
+                  <Tooltip id="tooltip-password"> I'm just joking, put whatever you want. </Tooltip>
+                  }>
+              <span className="d-inline-block">
+                <Button variant="info" style={{ pointerEvents: 'none' }}>
+                    ⓘ
+                </Button>
+              </span>
+            </OverlayTrigger>
+
+            <Form.Control.Feedback type="invalid">
+              Please choose a password.
+            </Form.Control.Feedback>
+
+
+            <Form.Text id="passwordHelpBlock" style={{fontSize: '0.8rem', width: '100%'}} muted>
+              Your password must be exactly 19 characters long, contains exactly 2 number and 3 letters, of which 1 must be capitalized.
+              It must not contain spaces, special characters, or emoji, but sanskrit or hieroglyphs will be allowed,
+              of which you may have up to 3, extending your total password length to 22 characters.  
+            </Form.Text>
+          </InputGroup>
         </Form.Group>
-        <Form.Group as={Col} md="3" controlId="register-state">
-          <Form.Label>State</Form.Label>
-          <Form.Control type="text" placeholder="State" required />
-          <Form.Control.Feedback type="invalid">
-            Please provide a valid state.
-          </Form.Control.Feedback>
-        </Form.Group>
-        <Form.Group as={Col} md="3" controlId="register-zip">
-          <Form.Label>Zip</Form.Label>
-          <Form.Control type="text" placeholder="Zip" required />
-          <Form.Control.Feedback type="invalid">
-            Please provide a valid zip.
-          </Form.Control.Feedback>
-        </Form.Group>
+        <Col md='1'></Col>
       </Row>
 
+      
 
       <Row className="mb-3">
-        <Form.Group hasValidation as={Col} md="6" controlId="formPlaintextUserType">
-          <Form.Label>
-            User Type: 
-          </Form.Label>
+      <Col md='1'></Col>
+        <Form.Group hasValidation as={Col} md="10" controlId="formPlaintextUserType">
+
+          <Button variant="light" style={{ pointerEvents: 'click', color: 'gray'}}>User Type &nbsp; 👤</Button>
+
           <Dropdown hasValidation className="d-inline mx-2" drop="down">
-            <Dropdown.Toggle size="sm" id="dropdown-autoclose-true">
+            <Dropdown.Toggle variant="dark" size="sm" id="dropdown-autoclose-true">
               {formData['userType']}
             </Dropdown.Toggle>
             <Dropdown.Menu >
@@ -189,9 +222,15 @@ export const RegisterForm2 = () => {
              Please select a user type.
           </p>
         </Form.Group>
+        <Col md='1'></Col>
+      </Row>
+
+      <hr />
+      
+      <Row className="mb-3 justify-content-md-center">
+          <Button variant="primary" type="submit" >Submit form</Button>
       </Row>
       
-      <Button type="submit">Submit form</Button>
     </Form>
 	);
 };

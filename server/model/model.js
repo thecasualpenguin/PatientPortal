@@ -3,15 +3,16 @@ const mongoose = require('mongoose');
     
 // Course Modal Schema
 const userSchema = new mongoose.Schema({
+    dateCreated: {type: Date, unique: true},
     fname: String,
     lname: String,
     age: Number,
-    email: String,
-    password: String,
+    email: {type: String, unique: true, required: true},
+    password: {type: String, required: true} ,
     city: String,
     state: String,
-    zipcode: String,
-    userType: String,
+    zipcode: String, 
+    userType: {type: String, required: true},
 });
     
 // Course Modal Schema
@@ -23,7 +24,8 @@ const productSchema = new mongoose.Schema({
 });
 
 const logEntrySchema = new mongoose.Schema({
-  datetime: String,
+  ISODate: Date,
+  dateString: String,
   ipAddress: String,
   location: Object,
   method: String,

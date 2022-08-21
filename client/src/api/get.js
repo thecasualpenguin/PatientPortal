@@ -17,4 +17,19 @@ const fetchProducts = async function(setProducts) {
   setProducts(productArray);
 }
 
+const getAllUsers = async function(setUserList) {
+
+  const response = await fetch(process.env.REACT_APP_UserEndpoint + '?username=allUsers');
+  const jsonData = await response.json()
+
+  // converted fetched JSON object to array
+  // const productArray = [];
+
+  // for (const [key, value] of Object.entries(jsonData)) {
+  //   productArray.push(value);
+  // }
+  
+  // setUserList(productArray);
+}
+
 export {fetchProducts};

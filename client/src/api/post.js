@@ -31,7 +31,25 @@ const postRegisterForm = async function(formData) {
     });
 
 }
+// posts new Product from Product Form
+const postProductForm = async function(formData) {
+  // using actual data
+  const data = formData;
+
+  const options = {
+    method: 'POST',
+    headers: { 'content-type': 'application/x-www-form-urlencoded' },   // encoding problem
+    data: qs.stringify(data),
+    url: process.env.REACT_APP_AddProductEndpoint,
+  };
+
+  let reqPromise = axios(options).then(response => {
+      console.log(response)
+      return 0
+    });
+
+  return reqPromise;
+}
 
 
-
-export {postRegisterForm};
+export {postRegisterForm, postProductForm};

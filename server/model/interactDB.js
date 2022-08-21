@@ -8,19 +8,6 @@ mongoose.connect(process.env.DATABASE_URL).then(
 	(err) => console.error(error)
 );
 
-// const user = new User( {name: 'Kyle', age: 26} )
-// user.save()
-//   .then( ()=> console.log("User Saved"))
-//   .catch( (error) => console.log(error) );
-
-function writeProduct(productInJson) {
-	const product = new Product(productInJson);
-	product
-		.save()
-		.then(() => console.log("user saved"))
-		.catch((error) => console.error(error));
-}
-
 const readAllProducts = function () {
 	// try {
 	//   let dbResponse = await User.find();
@@ -39,6 +26,25 @@ const readAllProducts = function () {
 			});
 	});
 };
+
+const readAllUsers = function () {
+	return new Promise((res, rej) => {
+		let dbPromise = User.find();
+		dbPromise
+			.then((data) => res(data))
+			.catch((err) => {
+				console.error(err), rej(err);
+			});
+	});
+};
+
+function writeProduct(productInJson) {
+	const product = new Product(productInJson);
+	product
+		.save()
+		.then(() => console.log("user saved"))
+		.catch((error) => console.error(error));
+}
 
 const writeLogEntry = function (logEntryJSON) {
   const product = new LogEntry(logEntryJSON);
@@ -67,6 +73,7 @@ const writeUser = function(userJSON) {
 
 module.exports = {
 	readAllProducts,
+  readAllUsers,
 	writeProduct,
   writeLogEntry,
   writeUser,

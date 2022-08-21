@@ -72,7 +72,8 @@ async function logAndSaveReqInfo(req) {
 
   // build log entry
   let logEntry = {
-    'datetime': new Date().toLocaleString(),
+    'ISODate': new Date(),
+    'dateString': new Date().toLocaleString(),
     'ipAddress': ip,
     'location': ip !== '127.0.0.1' ? locationRes.data : {'status': 'intercepted by developer'},
     'method': `${req.method}`,

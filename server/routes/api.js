@@ -1,7 +1,12 @@
 const { response } = require("express");
 const express = require("express");
 const router = express.Router();
-const { readAllProducts, writeProduct, writeUser } = require('../model/interactDB.js');
+const { 
+  readAllProducts, 
+  readAllUsers, 
+  writeProduct, 
+  writeUser 
+} = require('../model/interactDB.js');
 
 router.route("/")
 	.get((req, res) => {
@@ -46,9 +51,18 @@ router.route("/addProduct")
   });
 
 router.route('/users')
-  .get((req, res) => {
-    res.send( {status: 200, msg: 'received GET req to getUsers'} );
+  .get(async (req, res) => {
+    if (req.query.username === "ALLUSERS") {
+      const dbResponse = await readAllUsers();
+      res.send( {...dbResponse} );
+      return;
+    }
+    res.send( {
+      status: 200, 
+      msg: `received GET req to getUsers with username ${req.query.username}`
+    });
   })
+
   .post(async (req, res) => {
     let status = await writeUser(req.body)    // attempt to write to database
     
