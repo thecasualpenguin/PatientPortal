@@ -1,0 +1,8 @@
+.centerForm {
+  margin: auto;
+  margin-top: 1em;
+  width: 80%;
+  border: 2px solid #bbbbbb;
+  border-radius: 1em;
+  padding: 2em;
+}

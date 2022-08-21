@@ -48,7 +48,7 @@ class Navbar extends Component {
 					></i>
 				</div>
 
-				<Link to="/" style={{ "text-decoration": "none" }}>
+				<Link to="/" style={{ "textDecoration": "none" }}>
 					<h1 className="navbar-logo custom-font">
 						Patient Portal
 						{/* <i className="fa-solid fa-hand-holding-medical"></i> */}

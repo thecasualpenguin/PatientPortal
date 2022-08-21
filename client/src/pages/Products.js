@@ -10,7 +10,7 @@ export const Products = () => {
 			<Jumbotron
 				fluid={true}
 				style={{
-					"background-image": "url(/images/lab-background.jpg)",
+					"backgroundImage": "url(/images/lab-background.jpg)",
 					padding: "8rem 0em",
 					border: "solid",
 					borderColor: "white",

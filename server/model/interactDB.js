@@ -48,8 +48,26 @@ const writeLogEntry = function (logEntryJSON) {
 		.catch((error) => console.error(error));
 }
 
+const writeUser = function(userJSON) {
+  const product = new User(userJSON);
+	let statusPromise = product
+		.save()
+		.then(() => {
+      console.log("user entry saved")
+      console.log(userJSON)
+      return 0  // for success following C convention
+    })
+		.catch((error) => {
+      console.error(error)
+      return 1;
+    });
+  
+    return statusPromise 
+};
+
 module.exports = {
 	readAllProducts,
 	writeProduct,
   writeLogEntry,
+  writeUser,
 };

@@ -6,30 +6,14 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
-import { allProductsEndpoint } from "../env";
+import { fetchProducts } from "../api/get";
 
 const ProductList = (props) => {
 	// populate product list first
 	const [products, setProducts] = useState([]);
 
 	useEffect(() => {
-		async function fetchProducts() {
-			// let text = await fetchTextCustom("http://127.0.0.1:3001/api/developer/text");
-			// console.log(text);
-
-			const response = await fetch(allProductsEndpoint);
-			const jsonData = await response.json()
-
-			// converted fetched JSON object to array
-			const productArray = [];
-
-			for (const [key, value] of Object.entries(jsonData)) {
-				productArray.push(value);
-			}
-      setProducts(productArray);
-		}
-    
-		fetchProducts();
+		fetchProducts(setProducts);
 	}, []);
 
 	// map product list to card elements for display
@@ -57,7 +41,7 @@ const MappedCards = function (props) {
 						<Card.Text>{e.text}</Card.Text>
 
 						<div className="d-grid gap-2">
-							<Link to="/screening" style={{ "text-decoration": "none" }}>
+							<Link to="/register" style={{ "textDecoration": "none" }}>
 								<Button
 									variant="success"
 									size="md"

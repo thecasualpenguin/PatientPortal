@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -13,6 +14,7 @@ import { Reports } from "./pages/Reports.js";
 import { Products } from "./pages/Products.js";
 import { ScreeningForm } from "./pages/ScreeningForm.js";
 import { Developer } from "./pages/Developer.js";
+import { DisplayDatabase } from "./pages/DisplayDatabase";
 
 const App = () => {
 
@@ -28,6 +30,7 @@ const App = () => {
             <Route path="/register" element={<div> <Navigation /><Register /></div>} />
             <Route path="/screening" element={<div> <Navigation /><ScreeningForm /></div>} />
             <Route path="/developer" element={<div> <Navigation /><Developer /></div>} />
+            <Route path="/display-database" element={<div> <Navigation /><DisplayDatabase /></div>} />
             <Route path="/*" element={ <Navigate to="/" replace={true}/> } />
 					</Routes>
 				</div>

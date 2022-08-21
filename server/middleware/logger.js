@@ -75,7 +75,8 @@ async function logAndSaveReqInfo(req) {
     'datetime': new Date().toLocaleString(),
     'ipAddress': ip,
     'location': ip !== '127.0.0.1' ? locationRes.data : {'status': 'intercepted by developer'},
-    'action': `Hitting ${req.originalUrl}`
+    'method': `${req.method}`,
+    'resource': `${req.originalUrl}`,
   }
   writeLogEntry(logEntry);
   

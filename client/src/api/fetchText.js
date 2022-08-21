@@ -41,4 +41,4 @@ const fetchTextCustom = (endpoint) => {
     return text;
 };
 
-export {fetchTextCustom};
+export default fetchTextCustom;
