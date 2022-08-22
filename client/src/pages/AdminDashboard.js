@@ -11,9 +11,7 @@ import ProductForm from "../components/forms/ProductForm";
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 
-
-import axios from "axios";
-import qs from 'qs';
+import { getAllUsers } from "../api/get";
 
 
 function Copyright(props) {
@@ -38,26 +36,12 @@ export const AdminDashboard = function() {
   // note to self: empty dependency array means
   // this effect will only run once (like componentDidMount in classes)
 
-  const getRawUserList = async() => {
-    let fetchedUsers = axios.get(
-      process.env.REACT_APP_UserEndpoint,
-      {
-        params: {
-          username: 'ALLUSERS'
-        }
-      }
-    ).then (
-      (res) => {return res}
-    )
-    return fetchedUsers;
-  }
-
   const handleFetchAllUsers = async (event) => {
     // begin fetching
     let button = event.target
     button.innerHTML = 'fetching ...';
     button.setAttribute('color', 'success');
-    const rawUserList = await getRawUserList();
+    const rawUserList = await getAllUsers();
     
     //begin populating
     let tempDisplayList = []

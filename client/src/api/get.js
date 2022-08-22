@@ -1,3 +1,5 @@
+import axios from "axios";
+
 // takes in an state setter method and sets it after fetching, 
 // this way no need to async the method calling this one
 const fetchProducts = async function(setProducts) {
@@ -17,19 +19,19 @@ const fetchProducts = async function(setProducts) {
   setProducts(productArray);
 }
 
-const getAllUsers = async function(setUserList) {
-
-  const response = await fetch(process.env.REACT_APP_UserEndpoint + '?username=allUsers');
-  const jsonData = await response.json()
-
-  // converted fetched JSON object to array
-  // const productArray = [];
-
-  // for (const [key, value] of Object.entries(jsonData)) {
-  //   productArray.push(value);
-  // }
-  
-  // setUserList(productArray);
+const getAllUsers = async function() {
+  let fetchedUsers = axios.get(
+    process.env.REACT_APP_UserEndpoint,
+    {
+      params: {
+        username: 'ALLUSERS'
+      }
+    }
+  ).then (
+    (res) => {return res}
+  )
+  return fetchedUsers;
 }
 
-export {fetchProducts};
+
+export {fetchProducts, getAllUsers};

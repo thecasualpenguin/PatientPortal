@@ -65,7 +65,7 @@ export const RegisterForm2 = () => {
     };
 
     setFormData(data);    // due to some potential closure issue, set to state hook will only be updated next render
-    // postRegisterForm(data);   // thus just use temp variable instead.
+    await postRegisterForm(data);   // thus just use temp variable instead.
 
     form.reset();
     setValidated(false);
