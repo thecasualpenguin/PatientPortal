@@ -47,7 +47,7 @@ export const AdminDashboard = function() {
     let tempDisplayList = []
     for (let [key, value] of Object.entries(rawUserList.data)) {
       tempDisplayList.push( 
-        <Row>
+        <Row className="mb-3" style={{border: 'solid', borderWidth: '1px', borderColor: 'gray'}}>
           <Col className="mx-2 my-1" >{value.fname}</Col>
           <Col className="mx-2 my-1">{value.lname}</Col>
           <Col className="mx-2 my-1">{value.email}</Col>
